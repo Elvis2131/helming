@@ -1,0 +1,6 @@
+apiVersion: v2
+name: backend
+appVersion: "1.0"
+description: An upgraded version of the guest-book application.
+version: 0.1.0
+type: application
