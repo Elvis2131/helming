@@ -1,0 +1,17 @@
+app:
+  specs:
+    image: mysql
+    replicas: 1
+    port: 8080
+    label: wordpressDb
+  env:
+    MYSQL_ROOT_PASSWORD: 
+    MYSQL_USER:
+    MYSQL_DATABSE: 
+
+nameOverride: ''
+
+resource:
+  enabled: true
+  memory: ''
+  cpu: ''

@@ -1,15 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "wordpress.fullname" . }}
-  labels:
-    {{- include "wordpress.labels" . | nindent 4 }}
+  namespace: aquaris
+  name: {{ include "wordpress.name" .}}
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+  type: LoadBalancer
   selector:
-    {{- include "wordpress.selectorLabels" . | nindent 4 }}
+    app: {{.Values.app.specs.label}}
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

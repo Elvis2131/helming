@@ -2,11 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   {{- $app_label := .Values.app.specs.label | quote}}
-  name: {{ include "wordpress.selectorLabels" .}}
+  namespace: {{.Values.app.namespace}}
+  name: {{ include "wordpressDb.name" .}}
   labels:
     app: {{$app_label}}
 spec:
-  replicas: {{.Values.replicaCount}}
+  replicas: {{.Values.app.specs.replicas}}
   selector:
     matchLabels:
       app: {{$app_label}}
@@ -30,4 +31,4 @@ spec:
             cpu: {{- .Values.resource.cpu | default "500m" | quote }}
       {{- end}}
         ports:
-          - containerPort: {{.Values.app.port}}
+          - containerPort: {{.Values.app.specs.port}}

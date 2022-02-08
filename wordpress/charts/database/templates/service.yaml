@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: 
+  name: {{ include "wordpressDb.name" .}}-service
+spec:
+  selector:
+    app: {{.Values.app.specs.label | quote}}
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: {{.Values.app.specs.port}}
