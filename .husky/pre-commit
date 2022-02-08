@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
+bash -c '"C:\Users\ELVIS LARTEY\.talisman\bin\talisman_windows_amd64.exe" --githook pre-commit'
 
 echo "I am working"
